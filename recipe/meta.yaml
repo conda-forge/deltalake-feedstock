@@ -26,7 +26,7 @@ requirements:
     - xz  # [linux]
   run:
     - python
-    - pyarrow >=8
+    - pyarrow >=8,<=12
     - typing-extensions  # [py<38]
 
 test:
