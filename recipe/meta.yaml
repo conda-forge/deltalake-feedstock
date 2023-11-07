@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -26,7 +26,7 @@ requirements:
     - xz  # [linux]
   run:
     - python
-    - pyarrow >=8,<=12
+    - pyarrow >=8
 
 test:
   imports:
