@@ -15,13 +15,13 @@ build:
 
 requirements:
   build:
-    - maturin >=0.14,<0.15
+    - maturin >=1,<2
     - make
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
   host:
     - python
-    - maturin >=0.14,<0.15
+    - maturin >=1,<2
     - pip
     - xz  # [linux]
   run:
