@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "0.13.0" %}
+{% set version = "0.14.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,21 +7,21 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: e433215eadbc4b845a5b66fc21d8cd18993b4e9fa3fa604b8cd2915271e4e02e
+  sha256: 6aaeac1423c16fa574515f7a0c76b85c4d5fd8e409b0ffcd2c4763f96a6cdb44
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 2
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   build:
-    - maturin >=0.14,<0.15
+    - maturin >=1,<2
     - make
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
   host:
     - python
-    - maturin >=0.14,<0.15
+    - maturin >=1,<2
     - pip
     - xz  # [linux]
   run:
@@ -40,7 +40,7 @@ about:
   home: https://github.com/delta-io/delta-rs
   summary: Native Delta Lake Python binding based on delta-rs with Pandas integration
   license: Apache-2.0
-  license_file: LICENSE.txt
+  license_file: licenses/
 
 extra:
   recipe-maintainers:
