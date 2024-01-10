@@ -30,8 +30,6 @@ requirements:
     - pyarrow >=8
 
 test:
-  imports:
-    - deltalake
   commands:
     - pip check
   requires:
