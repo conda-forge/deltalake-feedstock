@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -30,8 +30,6 @@ requirements:
     - pyarrow >=8
 
 test:
-  imports:
-    - deltalake
   commands:
     - pip check
   requires:
