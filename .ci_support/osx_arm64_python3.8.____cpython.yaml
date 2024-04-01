@@ -20,6 +20,3 @@ rust_compiler:
 - rust
 target_platform:
 - osx-arm64
-zip_keys:
-- - c_stdlib_version
-  - MACOSX_DEPLOYMENT_TARGET
