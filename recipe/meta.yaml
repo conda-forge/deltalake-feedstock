@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "0.16.4" %}
+{% set version = "0.17.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: 3cbfe1c894df1f62097ec64278292212793127f676a9d3014762b37b59ca55ee
+  sha256: 29881b267d1d1f180385253c093c0ae16774268c741187b149a3ec9ae15fb295
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
@@ -21,6 +21,7 @@ requirements:
     - make
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
+    - {{ stdlib("c") }}    # [linux]
   host:
     - python
     - maturin >=1,<2
