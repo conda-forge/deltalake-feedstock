@@ -10,6 +10,7 @@ source:
   sha256: c6f9ad68736413a6d7c1526d60905cdf4aaeb59b8c95cc782661250917719aef
 
 build:
+  skip: true  # [ppc64le]
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
 
