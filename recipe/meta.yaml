@@ -26,7 +26,7 @@ requirements:
   host:
     - python
     - maturin >=1,<2
-    - pip <=24.1
+    - pip
     - xz  # [linux]
   run:
     - pyarrow-hotfix
@@ -37,7 +37,7 @@ test:
   commands:
     - pip check
   requires:
-    - pip
+    - pip <=24.1
 
 about:
   home: https://github.com/delta-io/delta-rs
