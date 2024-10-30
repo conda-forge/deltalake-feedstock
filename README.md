@@ -298,6 +298,3 @@ Feedstock Maintainers
 * [@charlesbluca](https://github.com/charlesbluca/)
 * [@dhirschfeld](https://github.com/dhirschfeld/)
 
-
-<!-- dummy commit to enable rerendering -->
-
