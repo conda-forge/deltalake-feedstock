@@ -10,9 +10,15 @@ source:
   sha256: 88f92cede44b2737431dbf86d43ed3b3c8cb73db56e99138aea1a6d93e9c6821
 
 build:
-  skip: true  # [ppc64le]
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script:
+    # Taken from clangdev's recipe
+    # https://github.com/conda-forge/clangdev-feedstock/blob/01fc5e3e0fc690db85151dcb3ff512e6aa876be7/recipe/build.sh#L51-L56
+    # disable -fno-plt due to some GCC bug causing linker errors, see
+    # https://github.com/llvm/llvm-project/issues/51205
+    - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"    # [ppc64le]
+    - export CXXFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"  # [ppc64le]
+    - {{ PYTHON }} -m pip install . -vv
+  number: 1
 
 requirements:
   build:
