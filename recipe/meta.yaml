@@ -18,7 +18,7 @@ build:
     - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"    # [ppc64le]
     - export CXXFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"  # [ppc64le]
     - {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -33,7 +33,7 @@ requirements:
     - python
     - maturin >=1,<2
     - pip
-    - xz  # [linux]
+    - liblzma-devel  # [linux]
   run:
     - pyarrow-hotfix
     - python
