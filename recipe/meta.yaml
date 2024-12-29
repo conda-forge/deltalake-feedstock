@@ -33,7 +33,7 @@ requirements:
     - python
     - maturin >=1,<2
     - pip
-    - xz  # [linux]
+    - liblzma  # [linux]
   run:
     - pyarrow-hotfix
     - python
