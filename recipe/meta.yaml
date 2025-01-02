@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "0.22.3" %}
+{% set version = "0.23.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: 5e753a000a4710b0e2a3c3793fd5383599c7a7d4fb86846ed2513e8ca41f2d9a
+  sha256: 003e1f4b3486eeb6db8fc3cc8ce6405658091085abb203f8608af34c494d4c3a
 
 build:
   script:
@@ -18,7 +18,7 @@ build:
     - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"    # [ppc64le]
     - export CXXFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"  # [ppc64le]
     - {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   build:
