@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "0.25.4" %}
+{% set version = "0.25.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: 67670235e18d61e2878e22925cddbfa9c80347ff2955acfa12d0114db5b77d7d
+  sha256: 173e4b83fcff10f26474ae117161c3f2bdd5f44c30c20463c24b6b8b520e7656
 
 build:
   script:
@@ -37,7 +37,7 @@ requirements:
   run:
     - pyarrow-hotfix
     - python
-    - pyarrow >=16,<19
+    - pyarrow >=16,!=19.0.0
 
 test:
   commands:
