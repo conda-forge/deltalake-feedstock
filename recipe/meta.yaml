@@ -17,6 +17,9 @@ build:
     # https://github.com/llvm/llvm-project/issues/51205
     - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"    # [ppc64le]
     - export CXXFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"  # [ppc64le]
+    # license file inclusion by pip fails with 'Failed to write to *.dist-info/licenses/licenses/deltalake_license.txt'
+    # since we are including it in the conda package separately, let's not do it with pip too
+    - sed -i.bak '/^license =/d' pyproject.toml
     - {{ PYTHON }} -m pip install . -vv
   number: 0
 
@@ -29,6 +32,8 @@ requirements:
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
     - {{ stdlib("c") }}    # [linux]
+    - m2-sed               # [win]
+    - sed                  # [not win]
   host:
     - python
     - maturin >=1,<2
