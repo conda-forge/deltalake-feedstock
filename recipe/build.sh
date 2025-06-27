@@ -11,6 +11,7 @@ fi
 sed -i.bak '/^license =/d' pyproject.toml
 
 if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$target_platform" != "linux-aarch64" ]]; then
+  export LIBCLANG_PATH=$BUILD_PREFIX/lib
   (
     # Needed to bootstrap itself into the conda ecosystem
     unset CARGO_BUILD_TARGET
@@ -22,7 +23,6 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
     unset CPPFLAGS
     unset LDFLAGS
     unset PREFIX
-    export LIBCLANG_PATH=$BUILD_PREFIX/lib
     cargo install --verbose bindgen-cli
   )
   export PATH=$CARGO_HOME/bin:$PATH
