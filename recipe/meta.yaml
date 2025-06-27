@@ -20,6 +20,7 @@ build:
     # license file inclusion by pip fails with 'Failed to write to *.dist-info/licenses/licenses/deltalake_license.txt'
     # since we are including it in the conda package separately, let's not do it with pip too
     - sed -i.bak '/^license =/d' pyproject.toml
+    - CARGO_BUILD_TARGET= cargo install --force --locked bindgen-cli    # [linux and not (x86_64 or aarch64)]
     - {{ PYTHON }} -m pip install . -vv
   number: 0
 
