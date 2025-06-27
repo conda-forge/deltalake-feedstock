@@ -26,6 +26,7 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
     cargo install --verbose bindgen-cli
   )
   export PATH=$CARGO_HOME/bin:$PATH
+  export BINDGEN_EXTRA_CLANG_ARGS="--sysroot=$CONDA_BUILD_SYSROOT -target $HOST"
 fi
 
 ${PYTHON} -m pip install . -vv
