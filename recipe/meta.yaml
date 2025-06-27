@@ -10,18 +10,6 @@ source:
   sha256: fbe4cccde0af14c6e30b62cc3dd09e9a46777e8fd8e375ec809a6bf4edea756c
 
 build:
-  script:
-    # Taken from clangdev's recipe
-    # https://github.com/conda-forge/clangdev-feedstock/blob/01fc5e3e0fc690db85151dcb3ff512e6aa876be7/recipe/build.sh#L51-L56
-    # disable -fno-plt due to some GCC bug causing linker errors, see
-    # https://github.com/llvm/llvm-project/issues/51205
-    - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"    # [ppc64le]
-    - export CXXFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"  # [ppc64le]
-    # license file inclusion by pip fails with 'Failed to write to *.dist-info/licenses/licenses/deltalake_license.txt'
-    # since we are including it in the conda package separately, let's not do it with pip too
-    - sed -i.bak '/^license =/d' pyproject.toml
-    - CARGO_BUILD_TARGET= cargo install --force --locked bindgen-cli    # [linux and not (x86_64 or aarch64)]
-    - {{ PYTHON }} -m pip install . -vv
   number: 0
 
 requirements:
