@@ -27,6 +27,7 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
   )
   export PATH=$CARGO_HOME/bin:$PATH
   export BINDGEN_EXTRA_CLANG_ARGS="--sysroot=$CONDA_BUILD_SYSROOT -target $HOST"
+  echo "BINDGEN_EXTRA_CLANG_ARGS=${BINDGEN_EXTRA_CLANG_ARGS}"
 fi
 
 ${PYTHON} -m pip install . -vv
