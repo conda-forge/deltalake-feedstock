@@ -22,6 +22,7 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
     unset CPPFLAGS
     unset LDFLAGS
     unset PREFIX
+    export LIBCLANG_PATH=$BUILD_PREFIX/lib
     cargo install --verbose bindgen-cli
   )
   export PATH=$CARGO_HOME/bin:$PATH

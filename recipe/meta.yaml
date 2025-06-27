@@ -25,6 +25,7 @@ requirements:
     - sed                  # [not win]
     # see https://aws.github.io/aws-lc-rs/requirements/linux.html
     - cmake                # [linux and not (x86_64 or aarch64)]
+    - libclang             # [linux and not (x86_64 or aarch64)]
   host:
     - python
     - maturin >=1,<2
