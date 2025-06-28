@@ -30,7 +30,7 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
   echo "BINDGEN_EXTRA_CLANG_ARGS=${BINDGEN_EXTRA_CLANG_ARGS}"
   CONDA_RUST_HOST_LOWER=$(echo $CONDA_RUST_HOST | tr '[:upper:]' '[:lower:]')
   export CFLAGS_${CONDA_RUST_HOST_LOWER}="-isystem $BUILD_PREFIX/include"
-  CONDA_RUST_TARGET_LOWER=$(echo $CONDA_RUST_HOST | tr '[:upper:]' '[:lower:]')
+  CONDA_RUST_TARGET_LOWER=$(echo $CONDA_RUST_TARGET | tr '[:upper:]' '[:lower:]')
   export CFLAGS_${CONDA_RUST_TARGET_LOWER}="$CFLAGS"
   unset CFLAGS
 fi
