@@ -11,6 +11,8 @@ source:
 
 build:
   number: 0
+  # build failures on ppc64le
+  skip: true   # [ppc64le]
 
 requirements:
   build:
