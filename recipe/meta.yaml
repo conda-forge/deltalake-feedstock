@@ -10,7 +10,7 @@ source:
   sha256: fbe4cccde0af14c6e30b62cc3dd09e9a46777e8fd8e375ec809a6bf4edea756c
 
 build:
-  number: 0
+  number: 1
   # build failures on ppc64le
   skip: true   # [ppc64le]
 
