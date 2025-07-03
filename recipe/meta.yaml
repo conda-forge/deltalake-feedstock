@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "0.25.4" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,18 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: 67670235e18d61e2878e22925cddbfa9c80347ff2955acfa12d0114db5b77d7d
+  sha256: fbe4cccde0af14c6e30b62cc3dd09e9a46777e8fd8e375ec809a6bf4edea756c
 
 build:
-  script:
-    # Taken from clangdev's recipe
-    # https://github.com/conda-forge/clangdev-feedstock/blob/01fc5e3e0fc690db85151dcb3ff512e6aa876be7/recipe/build.sh#L51-L56
-    # disable -fno-plt due to some GCC bug causing linker errors, see
-    # https://github.com/llvm/llvm-project/issues/51205
-    - export CFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"    # [ppc64le]
-    - export CXXFLAGS="$(echo $CFLAGS | sed 's/-fno-plt //g')"  # [ppc64le]
-    - {{ PYTHON }} -m pip install . -vv
   number: 0
+  # build failures on ppc64le
+  skip: true   # [ppc64le]
 
 requirements:
   build:
@@ -29,12 +23,20 @@ requirements:
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
     - {{ stdlib("c") }}    # [linux]
+    - m2-sed               # [win]
+    - sed                  # [not win]
+    # see https://aws.github.io/aws-lc-rs/requirements/linux.html
+    - cmake                # [linux and not (x86_64 or aarch64)]
+    - clang                # [linux and not (x86_64 or aarch64)]
+    - libclang             # [linux and not (x86_64 or aarch64)]
   host:
     - python
     - maturin >=1,<2
     - pip
     - liblzma-devel  # [linux]
   run:
+    - arro3-core >=0.5.0
+    - deprecated >=1.2.18
     - pyarrow-hotfix
     - python
     - pyarrow >=16,<19
