@@ -51,7 +51,7 @@ about:
   home: https://github.com/delta-io/delta-rs
   summary: Native Delta Lake Python binding based on delta-rs with Pandas integration
   license: Apache-2.0
-  license_file: LICENSE.txt
+  license_file: python/LICENSE.txt
 
 extra:
   recipe-maintainers:
