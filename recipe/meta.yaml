@@ -12,7 +12,8 @@ source:
 build:
   number: 0
   # build failures on ppc64le
-  skip: true  # [ppc64le]
+  skip: true                         # [ppc64le or (is_abi3 and not is_python_min)]
+  python_version_independent: true   # [is_abi3]
 
 requirements:
   build:
@@ -30,6 +31,7 @@ requirements:
     - clang                # [linux and not (x86_64 or aarch64)]
     - libclang             # [linux and not (x86_64 or aarch64)]
   host:
+    - python-abi3                    # [is_abi3]
     - python
     - maturin >=1,<2
     - pip
@@ -42,10 +44,13 @@ requirements:
     - pyarrow >=16,<19
 
 test:
-  commands:
-    - pip check
   requires:
     - pip <=24.1
+    - abi3audit                      # [is_abi3]
+  commands:
+    - pip check
+    - abi3audit $SP_DIR/deltalake/_internal.abi3.so -s -v --assume-minimum-abi3 {{ python_min }}   # [unix and is_abi3]
+    - abi3audit %SP_DIR%/deltalake/_internal.pyd -s -v --assume-minimum-abi3 {{ python_min }}      # [win and is_abi3]
 
 about:
   home: https://github.com/delta-io/delta-rs
