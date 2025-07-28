@@ -10,6 +10,8 @@ fi
 # since we are including it in the conda package separately, let's not do it with pip too
 sed -i.bak '/^license =/d' pyproject.toml
 
+echo ${is_python_min}
+
 if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$target_platform" != "linux-aarch64" ]]; then
   export LIBCLANG_PATH=$BUILD_PREFIX/lib
   (
