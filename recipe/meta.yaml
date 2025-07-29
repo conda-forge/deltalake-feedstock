@@ -6,8 +6,10 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: 173e4b83fcff10f26474ae117161c3f2bdd5f44c30c20463c24b6b8b520e7656
+  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
+    sha256: 173e4b83fcff10f26474ae117161c3f2bdd5f44c30c20463c24b6b8b520e7656
+  - url: https://raw.githubusercontent.com/delta-io/delta-rs/refs/tags/python-v{{ version }}/LICENSE.txt
+    sha256: a25917a221b6184dcb9e0701f91dde42acc495f69958a84e2a5860a5c0f21ddd
 
 build:
   number: 0
@@ -21,6 +23,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - maturin >=1,<2
     - make
+    - cargo-bundle-licenses
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
     - {{ stdlib("c") }}    # [linux]
@@ -54,7 +57,9 @@ about:
   home: https://github.com/delta-io/delta-rs
   summary: Native Delta Lake Python binding based on delta-rs with Pandas integration
   license: Apache-2.0
-  license_file: python/LICENSE.txt
+  license_file:
+    - LICENSE.txt
+    - python/THIRDPARTY.yml
 
 extra:
   recipe-maintainers:
