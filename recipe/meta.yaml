@@ -42,7 +42,7 @@ requirements:
   run:
     - pyarrow-hotfix
     - python
-    - pyarrow >=16,<19
+    - pyarrow >=16,!=19.0.0
 
 test:
   requires:
