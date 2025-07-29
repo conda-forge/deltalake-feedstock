@@ -1,13 +1,15 @@
 {% set name = "deltalake" %}
-{% set version = "1.1.2" %}
+{% set version = "0.25.5" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: b3f896628876cc0465dccfb40cf76eaf977c6b551197e8e29da30f0457abb841
+  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
+    sha256: 173e4b83fcff10f26474ae117161c3f2bdd5f44c30c20463c24b6b8b520e7656
+  - url: https://raw.githubusercontent.com/delta-io/delta-rs/refs/tags/python-v{{ version }}/LICENSE.txt
+    sha256: a25917a221b6184dcb9e0701f91dde42acc495f69958a84e2a5860a5c0f21ddd
 
 build:
   number: 0
@@ -21,6 +23,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - maturin >=1,<2
     - make
+    - cargo-bundle-licenses
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
     - {{ stdlib("c") }}    # [linux]
@@ -37,11 +40,9 @@ requirements:
     - pip
     - liblzma-devel  # [linux]
   run:
-    - arro3-core >=0.5.0
-    - deprecated >=1.2.18
     - pyarrow-hotfix
     - python
-    - pyarrow >=16,<19
+    - pyarrow >=16,!=19.0.0
 
 test:
   requires:
@@ -56,7 +57,9 @@ about:
   home: https://github.com/delta-io/delta-rs
   summary: Native Delta Lake Python binding based on delta-rs with Pandas integration
   license: Apache-2.0
-  license_file: python/LICENSE.txt
+  license_file:
+    - LICENSE.txt
+    - python/THIRDPARTY.yml
 
 extra:
   recipe-maintainers:
