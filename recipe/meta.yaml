@@ -10,7 +10,7 @@ source:
   sha256: b3f896628876cc0465dccfb40cf76eaf977c6b551197e8e29da30f0457abb841
 
 build:
-  number: 0
+  number: 1
   # build failures on ppc64le
   skip: true                         # [ppc64le or (is_abi3 and not is_python_min)]
   python_version_independent: true   # [is_abi3]
@@ -21,6 +21,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - maturin >=1,<2
     - make
+    - cargo-bundle-licenses
     - {{ compiler('rust') }}
     - {{ compiler('c') }}  # [linux]
     - {{ stdlib("c") }}    # [linux]
@@ -56,7 +57,9 @@ about:
   home: https://github.com/delta-io/delta-rs
   summary: Native Delta Lake Python binding based on delta-rs with Pandas integration
   license: Apache-2.0
-  license_file: python/LICENSE.txt
+  license_file:
+    - python/LICENSE.txt
+    - python/THIRDPARTY.yml
 
 extra:
   recipe-maintainers:

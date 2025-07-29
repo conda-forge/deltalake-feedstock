@@ -39,3 +39,5 @@ fi
 
 ${PYTHON} -m pip install . -vv
 
+cd python
+cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
