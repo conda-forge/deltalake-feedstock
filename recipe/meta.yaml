@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "1.1.2" %}
+{% set version = "0.25.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: b3f896628876cc0465dccfb40cf76eaf977c6b551197e8e29da30f0457abb841
+  sha256: 173e4b83fcff10f26474ae117161c3f2bdd5f44c30c20463c24b6b8b520e7656
 
 build:
   number: 0
@@ -37,8 +37,6 @@ requirements:
     - pip
     - liblzma-devel  # [linux]
   run:
-    - arro3-core >=0.5.0
-    - deprecated >=1.2.18
     - pyarrow-hotfix
     - python
     - pyarrow >=16,<19
