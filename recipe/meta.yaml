@@ -10,7 +10,7 @@ source:
   sha256: 2e978950d420e050bbdcb5f62e3be93d331cb516ab4c9b1694cf1a7887c63e25
 
 build:
-  number: 1
+  number: 2
   # build failures on ppc64le
   skip: true  # [ppc64le or (is_abi3 and not is_python_min)]
   python_version_independent: true  # [is_abi3]
@@ -42,7 +42,7 @@ requirements:
     - deprecated >=1.2.18
     - pyarrow-hotfix
     - python
-    - pyarrow >=16,<19
+    - pyarrow >=16
 
 test:
   requires:
