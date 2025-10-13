@@ -40,8 +40,8 @@ requirements:
   run:
     - arro3-core >=0.5.0
     - deprecated >=1.2.18
-    - pyarrow-hotfix
     - python
+  run_constrained:
     - pyarrow >=16
 
 test:
