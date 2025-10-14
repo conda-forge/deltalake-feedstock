@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "1.1.4" %}
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: 2e978950d420e050bbdcb5f62e3be93d331cb516ab4c9b1694cf1a7887c63e25
+  sha256: cfcd1b7b89cd8aeb80d4781d33e69d1323aa51313d76410380fc43cfbd2ef5cb
 
 build:
-  number: 2
+  number: 0
   # build failures on ppc64le
   skip: true  # [ppc64le or (is_abi3 and not is_python_min)]
   python_version_independent: true  # [is_abi3]
@@ -40,8 +40,8 @@ requirements:
   run:
     - arro3-core >=0.5.0
     - deprecated >=1.2.18
-    - pyarrow-hotfix
     - python
+  run_constrained:
     - pyarrow >=16
 
 test:
