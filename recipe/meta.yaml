@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "1.4.0" %}
+{% set version = "1.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: dd46322d4eeab06a766a729b76cf0d29c5f952dcf38d1668a167d2c5fcccb63b
+  sha256: 0a7e7f2f0f60edab087087f0144e539428c8d5a0e6f80f86fe49db82499a50ab
 
 build:
   number: 0
