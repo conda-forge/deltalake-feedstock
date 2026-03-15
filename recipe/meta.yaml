@@ -14,6 +14,8 @@ build:
   # build failures on ppc64le
   skip: true  # [ppc64le or (is_abi3 and not is_python_min)]
   python_version_independent: true  # [is_abi3]
+  overlinking_ignore_patterns:  # [win]
+    - "*"                       # [win]
 
 requirements:
   build:
