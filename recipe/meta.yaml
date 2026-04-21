@@ -1,5 +1,5 @@
 {% set name = "deltalake" %}
-{% set version = "1.5.0" %}
+{% set version = "1.5.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/deltalake-{{ version }}.tar.gz
-  sha256: cdea832ebcadd9f6ccedfcf023f244f2830152fd82b2f78b42e701989dd73b2d
+  sha256: e75f5c0c0e3a4aae350701fd2c4122d57a182eddce335c5554ea345984d18885
 
 build:
   number: 0
   # build failures on ppc64le
   skip: true  # [ppc64le or (is_abi3 and not is_python_min)]
   python_version_independent: true  # [is_abi3]
-  overlinking_ignore_patterns:  # [win]
+  overlinking_ignore_patterns:   # [win]
     - "*"                       # [win]
 
 requirements:
