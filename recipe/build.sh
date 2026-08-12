@@ -37,7 +37,7 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
   unset CFLAGS
 fi
 
-${PYTHON} -m pip install . -vv
+${PYTHON} -m pip install . -vv --no-deps --no-build-isolation
 
 cd python
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml

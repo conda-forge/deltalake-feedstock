@@ -1,15 +1,14 @@
 schema_version: 1
 
 context:
-  name: deltalake
   version: "1.5.0"
 
 package:
-  name: ${{ name|lower }}
+  name: deltalake
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/deltalake-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/d/deltalake/deltalake-${{ version }}.tar.gz
   sha256: cdea832ebcadd9f6ccedfcf023f244f2830152fd82b2f78b42e701989dd73b2d
 
 build:
