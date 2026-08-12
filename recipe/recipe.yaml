@@ -1,15 +1,16 @@
 schema_version: 1
 
 context:
-  version: "1.5.0"
+  version: "1.6.2"
 
 package:
   name: deltalake
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/d/deltalake/deltalake-${{ version }}.tar.gz
-  sha256: cdea832ebcadd9f6ccedfcf023f244f2830152fd82b2f78b42e701989dd73b2d
+  # no sdist since 1.6.0, https://github.com/delta-io/delta-rs/issues/4645
+  url: https://github.com/delta-io/delta-rs/archive/refs/tags/python-v${{ version }}.tar.gz
+  sha256: af060741b38f2ed8aded4712f2da2302935113921ecc89f3fa8c49d6c1b2bd8e
 
 build:
   number: 0
@@ -56,7 +57,7 @@ requirements:
     - deprecated >=1.2.18
     - python
   run_constraints:
-    - pyarrow >=16
+    - pyarrow >=21
 
 tests:
   - python:
