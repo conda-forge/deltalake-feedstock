@@ -41,6 +41,9 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
   unset CFLAGS
 fi
 
+if [[ ${target_platform} == osx-arm64 ]]; then
+  export RUSTFLAGS="-Cdebuginfo=0"
+fi
 ${PYTHON} -m pip install . -vv --no-deps --no-build-isolation
 
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
