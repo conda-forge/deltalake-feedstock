@@ -31,10 +31,10 @@ requirements:
     - make
     - cargo-bundle-licenses
     - ${{ compiler('rust') }}
+    - ${{ stdlib("c") }}
     - if: linux
       then:
         - ${{ compiler('c') }}
-        - ${{ stdlib("c") }}
     - if: win
       then: m2-sed
       else: sed
