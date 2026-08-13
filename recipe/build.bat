@@ -6,6 +6,8 @@ sed -i.bak '/^license =/d' pyproject.toml || exit 1
 
 REM avoid path too long problem
 set CARGO_HOME=C:\
+set PYTHONUTF8=1
+set PYTHONIOENCODING=utf-8
 %PYTHON% -m pip install . -vv --no-deps --no-build-isolation || exit 1
 
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
