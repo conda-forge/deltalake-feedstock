@@ -1,3 +1,7 @@
+set -e -x
+
+cd python
+
 # Taken from clangdev's recipe
 # https://github.com/conda-forge/clangdev-feedstock/blob/01fc5e3e0fc690db85151dcb3ff512e6aa876be7/recipe/build.sh#L51-L56
 # disable -fno-plt due to some GCC bug causing linker errors, see
@@ -37,7 +41,9 @@ if [[ "$target_platform" == "linux-"* && "$target_platform" != "linux-64" && "$t
   unset CFLAGS
 fi
 
-${PYTHON} -m pip install . -vv
+if [[ ${target_platform} == osx-arm64 ]]; then
+  export RUSTFLAGS="-Cdebuginfo=0"
+fi
+${PYTHON} -m pip install . -vv --no-deps --no-build-isolation
 
-cd python
 cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
