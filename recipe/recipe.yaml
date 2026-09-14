@@ -8,12 +8,11 @@ package:
   version: ${{ version }}
 
 source:
-  # no sdist since 1.6.0, https://github.com/delta-io/delta-rs/issues/4645
-  url: https://github.com/delta-io/delta-rs/archive/refs/tags/python-v${{ version }}.tar.gz
-  sha256: 1f5278f94dc9f1e72b7bb90fec06da6bc18a25f9b77741472c3a8410a6e680d0
+  url: https://pypi.org/packages/source/d/deltalake/deltalake-${{ version }}.tar.gz
+  sha256: b7176c9d2a48b3ad339902e6216cdde813857b9628ef53e972889c71d2836fc4
 
 build:
-  number: 0
+  number: 1
   skip:
     # build failures on ppc64le
     - ppc64le
@@ -83,7 +82,7 @@ about:
   license: Apache-2.0
   license_file:
     - python/LICENSE.txt
-    - python/THIRDPARTY.yml
+    - THIRDPARTY.yml
   homepage: https://github.com/delta-io/delta-rs
 
 extra:
