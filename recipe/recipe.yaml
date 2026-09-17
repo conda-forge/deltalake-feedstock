@@ -13,7 +13,7 @@ source:
   sha256: 1f5278f94dc9f1e72b7bb90fec06da6bc18a25f9b77741472c3a8410a6e680d0
 
 build:
-  number: 0
+  number: 1
   skip:
     # build failures on ppc64le
     - ppc64le
