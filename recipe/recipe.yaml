@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "1.6.3"
+  version: "1.6.5"
 
 package:
   name: deltalake
@@ -10,7 +10,7 @@ package:
 source:
   # no sdist since 1.6.0, https://github.com/delta-io/delta-rs/issues/4645
   url: https://github.com/delta-io/delta-rs/archive/refs/tags/python-v${{ version }}.tar.gz
-  sha256: 1f5278f94dc9f1e72b7bb90fec06da6bc18a25f9b77741472c3a8410a6e680d0
+  sha256: 5682e149b2fb84b0f2be59b2994a942548e460919c291a90a09d3c4a13e82684
 
 build:
   number: 0
